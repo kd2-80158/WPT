@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register Here</title>
+    <link rel="stylesheet" href="Registration.css" />
+</head>
+<body>
+    <header>
+        <h1>Registration Form</h1>
+    </header>
+    
+    <div class="form">
+        <form action="server.jsp" method="post">
+            <table>
+                <tr>
+                    <td>Full Name:</td>
+                    <td><input type="text" required="required" name="MyName" placeholder="Name" />*</td>
+                </tr>
+                <tr>
+                    <td>Date of Birth: </td>
+                    <td><input type="date" name="myDOB" required="required" />*</td>
+                </tr>
+                <tr>
+                    <td>Email ID:</td>
+                    <td><input type="email" name="MyEmail" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9]+$"
+                            placeholder="Email" required="required" />*</td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="password"
+                            pattern="^[a-zA-Z0-9!@#\$%\^\&*_=+-]{8,12}$/g" required="required" />*</td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td>
+                        <select name="state" required="required">
+                            <option value="Uttarakhand">Uttarakhand</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Karnataka">Karnataka</option>
+                            
+                        </select>
+                        <select name="City" required="required">
+                            <option value="Nainital">Nainital</option>
+                            <option value="New Delhi">New Delhi</option>
+                            <option value="Rohini">Rohini</option>
+                            <option value="Lucknow">Lucknow</option>
+                            <option value="Surat">Surat</option>
+                        </select>
+                        <select name="District" required="required">
+                            <option value="Udham Singh Nagar">Udham Singh Nagar</option>
+                            <option value="Nainital">Nainital</option>
+                            <option value="Purnia">Purnia</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td>
+                        <radio><input type="radio" name="gender" value="Male" required="required">Male</radio>
+                        <radio><input type="radio" name="gender" value="Female" required="required">Female</radio>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Upload Photo</td>
+                    <td><input type="file" name="profilePhoto" accept="image/*" required="required" /></td>
+                </tr>
+                <tr>
+                    <td>Select Course:</td>
+                    <td>
+                        <select name="course" required="required">
+                            <option value=".Net">.Net</option>
+                            <option value="Javascript">Javascript</option>
+                            <option value="HTML">HTML</option>
+                            <option value="Java">Java</option>
+                            <option value="Python">Python</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="btnRegister" value="Register" />
+                        <input type="reset" value="Clear" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('form').submit(function(event){
+                var isValid = true;
+
+                $('input[type="text"], input[type="date"], input[type="email"], input[type="password"], select, input[type="file"], input[type="radio"]').each(function(){
+                    if(!$(this).val()){
+                        $(this).addClass('invalid');
+                        isValid = false;
+                    } else {
+                        $(this).removeClass('invalid');
+                    }
+                });
+
+                if(!isValid){
+                    event.preventDefault();
+                    alert('Please fill in all required fields.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
